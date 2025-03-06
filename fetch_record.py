@@ -100,4 +100,61 @@ for i in limitResult:
     print(i)
     
     
+# JOINS
+
+joins = """
+    SELECT Employee.emp_id, Employee.first_name, Employee.last_name, Employee.gender, 
+           Employee.hire_date, Department.dep_name
+    FROM Employee
+    INNER JOIN Department ON Employee.dep_id = Department.dep_id
+"""
+cursorObject.execute(joins)
+results = cursorObject.fetchall()
+
+print("\n" + "-" * 50)    
+print("inner join: ")
+print("-" * 50) 
+
+
+for row in results:
+    print(row)
+
+
+# left JOIN
+
+leftjoin = """
+    SELECT Employee.emp_id, Employee.first_name, Employee.last_name, Employee.gender, 
+           Employee.hire_date, Department.dep_name
+    FROM Employee
+    LEFT JOIN Department ON Employee.dep_id = Department.dep_id
+"""
+cursorObject.execute(leftjoin)
+results = cursorObject.fetchall()
+
+print("\n" + "-" * 50)    
+print("Left join: ")
+print("-" * 50) 
+
+for row in results:
+    print(row)
+
+
+query = """
+    SELECT Employee.emp_id, Employee.first_name, Employee.last_name, Employee.gender, 
+           Employee.hire_date, Department.dep_name
+    FROM Employee
+    RIGHT JOIN Department ON Employee.dep_id = Department.dep_id
+"""
+cursorObject.execute(query)
+results = cursorObject.fetchall()
+
+print("\n" + "-" * 50)    
+print("Right join: ")
+print("-" * 50) 
+
+for row in results:
+    print(row)
+
+    
+    
 dataBase.close()
